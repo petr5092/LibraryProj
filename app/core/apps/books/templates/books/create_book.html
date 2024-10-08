@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form action="{% url 'add_book' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{form.title.label}}</span>
+            {{form.title}}
+            {{form.title.errors}}
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{form.description.label}}</span>
+            {{form.description}}
+            {{form.description.errors}}
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            {{form.doc}}
+            {{form.doc.errors}}
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{form.library.label}}</span>
+            {{form.library}}
+            {{form.library.errors}}
+        </div>
+        <button class="btn btn-primary col-12">Создать</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

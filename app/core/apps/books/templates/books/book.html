@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="card mb-2">
+        <div class="card-header d-flex justify-content-between p-2"> 
+          <div>
+            <a href="/books/{{book.pk}}">Книга: {{book.title}}</a>
+          </div>
+          <div>
+            <span class="badge text-bg-secondary p-2"><a href="del_book/{{book.pk}}"><i class="bi bi-trash"></a></i></span> 
+          </div>
+        </div>
+        <div class="card-body">
+          {{book.description}}
+        </div>
+        <div class="card-body">
+          <a href="/books/{{book.pk}}/get_file">Файл книги</a>
+        </div>
+        <div class="card-body">
+            {{book.date}}
+        </div>
+        <div class="card-footer p-2"> <span class="badge text-bg-secondary p-2"><a href="/lib/{{book.library.pk}}">Библиотека {{book.library.description}}</a></span></div>
+    </div>
+</div>
+{% endblock %}
