@@ -8,6 +8,7 @@
             <a href="/books/{{book.pk}}">Книга: {{book.title}}</a>
           </div>
           <div>
+            <span class="badge text-bg-secondary p-2"><a href="/update_book/{{book.pk}}"><i class="bi bi-gear"></a></i></span> 
             <span class="badge text-bg-secondary p-2"><a href="del_book/{{book.pk}}"><i class="bi bi-trash"></a></i></span> 
           </div>
         </div>
@@ -20,7 +21,10 @@
         <div class="card-body">
             {{book.date}}
         </div>
-        <div class="card-footer p-2"> <span class="badge text-bg-secondary p-2"><a href="/lib/{{book.library.pk}}">Библиотека {{book.library.description}}</a></span></div>
+        <div class="card-footer p-2"> 
+          <span class="badge text-bg-secondary p-2"><a href="/lib/{{book.library.pk}}">Библиотека {{book.library.description}}</a></span>
+          <span class="badge text-bg-secondary p-2"><a href="/del_lib/{{book.library.pk}}"><i class="bi bi-trash"></a></i></span> 
+        </div>
     </div>
 </div>
 {% endblock %}

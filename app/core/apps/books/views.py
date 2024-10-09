@@ -13,8 +13,8 @@ from core.apps.books.forms import (
     LibraryCreateForm,
 )
 from django.shortcuts import redirect
-from django.urls import reverse
-from django.views.generic import ListView, CreateView, DetailView, TemplateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 
 class BookListView(ListView):
@@ -79,6 +79,24 @@ class AddLib(CreateView):
 
     def get_success_url(self):
         return reverse("add_lib")
+
+
+class UpdateBook(UpdateView):
+    model = Book
+    fields = ["description", "library"]
+    template_name = 'books/update_book.html'
+    context_object_name = "book"
+    pk_url_kwarg = "book_id"
+    success_url = reverse_lazy("main")
+
+
+class UpdateLib(UpdateView):
+    model = Library
+    fields = ["description"]
+    template_name = 'books/update_lib.html'
+    context_object_name = "lib"
+    pk_url_kwarg = "lib_id"
+    success_url = reverse_lazy("main")
 
 
 def get_file(request, book_id):
