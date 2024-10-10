@@ -40,7 +40,14 @@ class GetBook(DetailView):
     template_name = "books/book.html"
     context_object_name = "book"
     pk_url_kwarg = "book_id"
-
+    
+    def get_queryset(self) -> QuerySet[Any]:
+        return (
+            super()
+            .get_queryset()
+            .select_related("library")
+            .all()
+        )
 
 class FilterLib(BookListView):
     def get_queryset(self) -> QuerySet[Book]:

@@ -41,8 +41,6 @@ class BookCreateForm(forms.ModelForm):
             return self.add_error("library", "а-та-та")
         return library
 
-
-    
     def is_valid(self):
         errors = self.errors.as_data()
         for field in self.fields:
