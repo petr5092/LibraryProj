@@ -41,6 +41,12 @@ class BookCreateForm(forms.ModelForm):
             return self.add_error("library", "а-та-та")
         return library
 
+    def clean_doc(self):
+        doc = self.cleaned_data.get("doc")
+        if not (doc):
+            return self.add_error("doc", "а-та-та")
+        return doc
+
     def is_valid(self):
         errors = self.errors.as_data()
         for field in self.fields:
